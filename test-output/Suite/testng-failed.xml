@@ -6,14 +6,21 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="RMITestScript.Test1">
+      <class name="RMITestScript.Applicant_Details">
         <methods>
-          <include name="setup"/>
           <include name="getScreenshot"/>
-          <include name="loginPage"/>
+          <include name="form"/>
           <include name="initialize"/>
         </methods>
-      </class> <!-- RMITestScript.Test1 -->
+      </class> <!-- RMITestScript.Applicant_Details -->
+      <class name="RMITestScript.Op_Login">
+        <methods>
+          <include name="getScreenshot"/>
+          <include name="setup"/>
+          <include name="loginPage" invocation-numbers="0"/>
+          <include name="initialize"/>
+        </methods>
+      </class> <!-- RMITestScript.Op_Login -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

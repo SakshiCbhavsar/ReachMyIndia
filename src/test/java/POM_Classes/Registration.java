@@ -18,7 +18,7 @@ public class Registration extends Base_Page {
 //	private WebDriver driver;
 //    WebDriverWait wait; 
 	 
-	@FindBy(css=".signUpTop")
+	@FindBy(xpath="//a[normalize-space()='Register']")
 	private WebElement regbtn;
 	
 	@FindBy(id="IsAccept")
@@ -42,11 +42,18 @@ public class Registration extends Base_Page {
 	@FindBy(id="emailotpsend")
 	private static WebElement emlOtpbtn;
 	
+//	@FindBy(id="EmailId-invalid")
+//	private static WebElement invalidEmailId;
+	
+//	@FindBy(xpath="//div[@id='EmailId-invalid']")
+//	private static WebElement invalidReqOrOTP;
+	
 	@FindBy(id="EmailOTP")
 	private static WebElement EOtp;
 	
 	@FindBy(id="Continue")
 	private static WebElement ctn;
+
 
 	  public Registration(WebDriver driver) 
 			{
@@ -58,15 +65,18 @@ public class Registration extends Base_Page {
 	
 		regbtn.click();
 		ckbox.click();
+		Thread.sleep(3000);
 		Rbutton.click();
 		Thread.sleep(3000);
 		entrMovbileNum.sendKeys(MobNum);
 		MOtpbtn.click();
-		Thread.sleep(12000);
+		Thread.sleep(15000);
 		entrEmlId.sendKeys(EmlID);
 		emlOtpbtn.click();
-		Thread.sleep(12000);
+//		invalidEmailId.getText();
+		Thread.sleep(15000);
 		ctn.click();
+	}
 		
 		/*new WebDriverWait(driver,Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(entrMovbileNum)).sendKeys(MobNum);
 		MOtpbtn.click();
@@ -79,9 +89,12 @@ public class Registration extends Base_Page {
 		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		Thread.sleep(10000);
 		//new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(EOtp)).click();
-		ctn.click();*/
-		
-		
-	}
-	
+	   ctn.click();*/	
+//	public String invaliRqOrOtp() {
+////		return invalidReqOrOTP.getText();
+//	}
+//	public String emailAlreadyResister() {
+//		invalidEmailId.isDisplayed();
+//	 return invalidEmailId.getText();
+//	}
 }

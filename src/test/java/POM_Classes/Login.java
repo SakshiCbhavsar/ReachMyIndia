@@ -24,7 +24,6 @@ public class Login extends Base_Page
 	  @FindBy(id="Password")
 	  private WebElement passwd;
 	  
-	  
 	  @FindBy(xpath="//span[normalize-space()='Login']")
 	  private WebElement button;
 	 
@@ -34,8 +33,6 @@ public class Login extends Base_Page
 		  	this.driver=driver;
 			PageFactory.initElements(driver, this);
 		}
-
-	 
 
 	public void login(String username,String password) throws InterruptedException 
 	 {

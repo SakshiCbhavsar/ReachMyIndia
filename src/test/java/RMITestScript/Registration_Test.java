@@ -1,6 +1,8 @@
 package RMITestScript;
 
 import java.io.IOException;
+
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -33,6 +35,12 @@ public class Registration_Test  extends BaseTest {
 		     regis = new Registration(driver);
 		     Thread.sleep(1000);
 		     regis.Registration_page(Mbnum,EIDnum);
+		     
+		  //   Assert.assertEquals(regis.invaliRqOrOtp(), "Invalid Request or Email Otp has expired, Please try again with new request");
+//		     Assert.assertEquals(regis.emailAlreadyResister(), "This EmailId is already Registered, Please use another Email Id");
+		  
+		     
+		     
 		    }
 		
 	 

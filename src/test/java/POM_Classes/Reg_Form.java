@@ -1,12 +1,19 @@
 package POM_Classes;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.hpsf.Date;
@@ -25,6 +32,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.text.PDFTextStripper;
 
 import Generic.Auto_Constant;
 import Generic.Base_Page;
@@ -65,8 +75,10 @@ public class Reg_Form extends Base_Page implements Auto_Constant {
 
 	@FindBy(xpath = "//input[@id='btnRegistration']")
 	private WebElement cont;
-
-	JavascriptExecutor js = (JavascriptExecutor) driver;
+	
+	@FindBy(xpath = "//a[normalize-space()='//a[normalize-space()='Download Application Form'] Application Form']")
+	private WebElement DowAppForm;
+	
 
 	public Reg_Form(WebDriver driver) {
 		this.driver = driver;
@@ -114,14 +126,54 @@ public class Reg_Form extends Base_Page implements Auto_Constant {
 		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(cont)).click();
 
 		// Navigate back two time
-		Thread.sleep(6000);
-		JavascriptExecutor js3 = (JavascriptExecutor) driver;
-		js3.executeScript("window.history.go(-2)");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3000));
+		Thread.sleep(10000);
 	}
+//	 public void details1(String aname) throws InterruptedException, IOException {
+//		    
+//		        DowAppForm.click();
+//		        // Extract text from the dynamically named PDF file
+//		        extractTextFromPDF(aname);
+		        
+//	 }
+//	 private void extractTextFromPDF(String aname) throws IOException {
+//		    String dynamicFilePath = "C:\\Users\\SAKSHI_BHAVASAR\\Downloads" + aname + ".pdf";
+//		    try {
+//		        FileInputStream fileInputStream = new FileInputStream(dynamicFilePath);
+//		        PDDocument document = PDDocument.load(fileInputStream);
+//		        PDFTextStripper stripper = new PDFTextStripper();
+//		        String text = stripper.getText(document);
+//		        String applicationId = extractApplicationId(text);
+//
+//		        System.out.println("Application ID: " + applicationId);
+//		        document.close();
+//		        
+//		        document.close();
+//		    } catch (FileNotFoundException e) {
+//		        System.err.println("File not found: " + dynamicFilePath);
+//		        e.printStackTrace();
+//		    } catch (IOException e) {
+//		        System.err.println("Error loading PDF: " + e.getMessage());
+//		        e.printStackTrace();
+//		    }
+//		}
+//	 
+//	 private String extractApplicationId(String text) {
+//		    String regex = "\\b[A-Za-z0-9]{20}\\b";
+//		
+//		    Pattern pattern = Pattern.compile(regex);
+//		    Matcher matcher = pattern.matcher(text);
+//	
+//		    if (matcher.find()) {
+//		        return matcher.group(1);
+//		    } else {
+//		        return null;
+//		    }
+//		}
 
 	// Scroll to Top
 	public static void Screenshot() throws IOException, InterruptedException {
+		
+		Thread.sleep(3000);
 		JavascriptExecutor js4 = (JavascriptExecutor) driver;
 		js4.executeScript("window.scrollTo(0, 0);");
 		Long innerHeight = (Long) js4.executeScript("return window.innerHeight;");

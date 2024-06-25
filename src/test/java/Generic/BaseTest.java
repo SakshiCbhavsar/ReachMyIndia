@@ -18,7 +18,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 
-import RMITestScript.Test1;
+import RMITestScript.LoginScript;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -55,8 +55,8 @@ public class BaseTest implements Auto_Constant {
 			driver = new EdgeDriver();
 		}
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(25));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 
@@ -64,7 +64,7 @@ public class BaseTest implements Auto_Constant {
 	}
 
 
-
+ 
 
     @AfterMethod(alwaysRun = true)
    	public String getScreenshot(WebDriver driver, String testCaseName) throws IOException 
